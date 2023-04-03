@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGU_C971.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            x:Name="AddNewTermToolBarItem"
+            Text="ADD NEW TERM"
+            Clicked="AddNewTermToolBarItem_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="AliceBlue">
+            <Label Text="DEGREE PLAN" 
+                FontSize="25"
+                HorizontalOptions="Center"
+                Margin="10"/>
+
+            <ListView x:Name="DegreePlanListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="Center">
+                                <Label
+                                    Text="{Binding Name}"
+                                    VerticalOptions="Center"
+                                    TextColor="Black"/>
+                                <Label
+                                    Text="{Binding StartDate}"
+                                    VerticalOptions="Center"
+                                    TextColor="Black"/>
+                                <Label Text=" - " VerticalOptions="Center" TextColor="Black"/>
+                                <Label
+                                    Text="{Binding EndDate}"
+                                    VerticalOptions="Center"
+                                    TextColor="Black"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

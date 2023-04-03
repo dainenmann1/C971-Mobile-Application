@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGU_C971.Views.TermDetails">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="{Binding Title}"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="1" Margin="2">
+                <StackLayout BackgroundColor="Yellow" Margin="0" Padding="10">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="Start Date: " FontSize="16" Margin="5, 0, 0, 5"/>
+                        <Label  x:Name="LblTermStartDate"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout BackgroundColor="Yellow" Margin="0" Padding="10">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="End Date: " FontSize="16" Margin="5, 0, 0, 5"/>
+                        <Label x:Name="LblTermEndDate"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Margin="0, 0,0, 5" Padding="2">
+                <StackLayout Margin="10, 20, 0, 0">
+                    <Label Text="Course:" FontSize="16"/>
+                </StackLayout>
+                <ListView x:Name="CourseListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell x:Name="CourseCell">
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" TextColor="Black" FontSize="18" Margin="10, 0, 0, 0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button x:Name="BtnAddNewCourse" 
+                        Text="NEW COURSE"
+                        BackgroundColor="Green"
+                        Clicked="BtnAddNewCourse_Clicked"/>
+                <Button x:Name="BtnEditTerm"
+                        Text="EDIT"
+                        BackgroundColor="Blue"
+                        Clicked="BtnEditTerm_Clicked"/>
+                <Button x:Name="BtnDeleteTerm"
+                        Text="DELETE"
+                        BackgroundColor="Red"
+                        Clicked="BtnDeleteTerm_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WGU_C971.Views.CourseDetailPage">
+    
+    <ContentPage.Content>
+        <StackLayout Margin="5, 0" Padding="5">
+            <StackLayout>
+                <Entry x:Name="TxtCourseName" Placeholder="Course Name"  FontSize="14"/>
+                <Picker x:Name="PickerCourseStatus" Title="Course Status" FontSize="14">
+                    <Picker.Items>
+                        <x:String>Anticipate To Take</x:String>
+                        <x:String>In Progress</x:String>
+                        <x:String>Completed</x:String>
+                        <x:String>Withdrawn</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="Start Date"  VerticalOptions="Center" FontSize="14"/>
+                    <DatePicker x:Name="DatePickerStartDate"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="End Date: "  VerticalOptions="Center" FontSize="14"/>
+                    <DatePicker x:Name="DatePickerEndDate"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout>
+                <Entry x:Name="TxtInstructorName" Placeholder="Name" FontSize="14"/>
+                <Entry x:Name="TxtInstructorEmail" Placeholder="Email" FontSize="14"/>
+                <Entry x:Name="TxtInstructorPhone" Placeholder="Phone" FontSize="14"/>
+                <Entry x:Name="TxtNotes" Placeholder="Notes...." FontSize="14"/>
+                <Button x:Name="BtnShareNote"
+                        Text="SHARE Note"
+                        BackgroundColor="LightSlateGray"
+                        Clicked="BtnShareNote_Clicked"/>
+
+                <StackLayout>
+                    <Button x:Name="BtnAssessments"
+                            Text="ASSESSMENTS"
+                            BackgroundColor="Teal"
+                            FontSize="14"
+                            Clicked="BtnAssessments_Clicked"/>
+                    <Button x:Name="BtnSaveCourse" 
+                            Text="SAVE" 
+                            BackgroundColor="Green" 
+                            TextColor="White"
+                            FontSize="14"
+                            Clicked="BtnSaveCourse_Clicked"/>
+                    <Button x:Name="BtnDelete" 
+                            Text="DELETE COURSE"
+                            BackgroundColor="Red"
+                            FontSize="14"
+                            Clicked="BtnDelete_Clicked"/>
+                    <Button x:Name="BtnCancel" 
+                            Text="CANCEL" 
+                            BackgroundColor="Blue" 
+                            TextColor="White"
+                            FontSize="14"
+                            Clicked="BtnCancel_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
