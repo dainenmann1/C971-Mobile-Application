@@ -18,7 +18,7 @@ namespace WGU_C971.Views
         public SchoolCourse Course;
         public Assessment Assessment;
         public List<string> AssessmentTypes = new List<string> { "Performance", "Objective" };
-
+        private bool changedBox;
         public EditAssessmentPage(MainPage mainPage, SchoolCourse course, Assessment assessment)
         {
             InitializeComponent();
@@ -31,6 +31,14 @@ namespace WGU_C971.Views
         {
             base.OnAppearing();
 
+            if (Assessment.Notify == true)
+            {
+                assessnotifBox.IsChecked = true;
+            }
+            else
+            {
+                assessnotifBox.IsChecked = false;
+            }
             TxtAssessmentName.Text = Assessment.Name;
             PickerAssessmentType.ItemsSource = AssessmentTypes;
             PickerAssessmentType.SelectedItem = AssessmentTypes.Find(assessmentType => assessmentType == Assessment.Type);
@@ -51,8 +59,16 @@ namespace WGU_C971.Views
                 Assessment.Name = TxtAssessmentName.Text;
                 Assessment.StartDate = DatePickerStartDate.Date;
                 Assessment.EndDate = DatePickerEndDate.Date;
+                if (assessnotifBox.IsChecked == true)
+                {
+                    Assessment.Notify = true;
+                }
+                else
+                {
+                    Assessment.Notify = false;
+                }
 
-                if (assessmentTypeModified || assessmentDatesModified)
+                if (assessmentTypeModified || assessmentDatesModified || changedBox)
                 {
                     using (SQLiteConnection connection = new SQLiteConnection(App.FilePath))
                     {
@@ -67,6 +83,7 @@ namespace WGU_C971.Views
                             UpdateAssessmentType();
                             connection.Update(Assessment);
                             await Navigation.PopModalAsync();
+                            
                         }
                         else if (isObjAssessment && objAssessments.Count == 0)
                         {
@@ -131,6 +148,10 @@ namespace WGU_C971.Views
         private void UpdateAssessmentType()
         {
             Assessment.Type = PickerAssessmentType.SelectedItem.ToString().Trim();
+        }
+        private void AssessnotifBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            changedBox = true;
         }
     }
 }

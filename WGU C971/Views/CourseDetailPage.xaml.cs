@@ -30,6 +30,14 @@ namespace WGU_C971.Views
         {
             base.OnAppearing();
 
+            if (Course.Notify == true)
+            {
+                notifBox.IsChecked = true;
+            }
+            else
+            {
+                notifBox.IsChecked = false;
+            }
             TxtCourseName.Text = Course.Name;
             PickerCourseStatus.SelectedItem = Course.Status;
             DatePickerStartDate.Date = Course.StartDate;
@@ -60,6 +68,15 @@ namespace WGU_C971.Views
                     Course.InstructorEmail = TxtInstructorEmail.Text;
                     Course.InstructorPhone = TxtInstructorPhone.Text;
                     Course.Note = TxtNotes.Text;
+
+                    if (notifBox.IsChecked == true)
+                    {
+                        Course.Notify = true;
+                    }
+                    else
+                    {
+                        Course.Notify = false;
+                    }
 
                     using (SQLiteConnection connection = new SQLiteConnection(App.FilePath))
                     {
@@ -166,13 +183,13 @@ namespace WGU_C971.Views
         {
             if (DatePickerStartDate.Date > DatePickerEndDate.Date)
             {
-                string message = "Please Check the Start Date and End Date!\nSelected Start Date is Greater Than End Date";
+                string message = "Please check the start and end date!\nSelected start date cannot come after the end date";
                 throw new ApplicationException(message);
             }
 
             if (DatePickerStartDate.Date < DateTime.Today)
             {
-                string message = "Start Date Cannot Be a Past Date.\nPlease Select a Future Date.";
+                string message = "Start date cannot Be a past date.\nPlease select a future date";
                 throw new ApplicationException(message);
             }
 
@@ -180,8 +197,8 @@ namespace WGU_C971.Views
                 DatePickerStartDate.Date > Term.EndDate ||
                 DatePickerEndDate.Date > Term.EndDate)
             {
-                string message = "Please Check the Start Date and End Date!\n" +
-                    "The course Must Start and End within the Term's Start and End Date.";
+                string message = "Please check the start and end date!\n" +
+                    "The course must start end with the Term's dates";
                 throw new ApplicationException(message);
             }
         }

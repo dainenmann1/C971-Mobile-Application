@@ -55,7 +55,7 @@ namespace WGU_C971.Views
 
             if (assessments.Count >= 2)
             {
-                await DisplayAlert("Warning!", "A Course Should Only have 1 Performance Assessment and 1 Objective Assessment.", "OK");
+                await DisplayAlert("Warning!", "A course can only have 1 Performance Assessment and 1 Objective Assessment", "OK");
             }
             else
             {

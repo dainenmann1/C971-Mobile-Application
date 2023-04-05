@@ -38,7 +38,7 @@ namespace WGU_C971.Views
                     {
                         if (term.StartDate > term.EndDate)
                         {
-                            throw new ApplicationException("Start Date cannot be Greater than the End Date");
+                            throw new ApplicationException("Start date cannot come after the end date");
                         }
 
                         connection.CreateTable<SchoolTerm>();
@@ -57,9 +57,9 @@ namespace WGU_C971.Views
                     }
                     else
                     {
-                        if (String.IsNullOrWhiteSpace(term.Name)) throw new ApplicationException("Term Name is Required");
-                        if (String.IsNullOrWhiteSpace(term.StartDate.ToString())) throw new ApplicationException("Start Date is Required");
-                        if (String.IsNullOrWhiteSpace(term.EndDate.ToString())) throw new ApplicationException("End Date is Required");
+                        if (String.IsNullOrWhiteSpace(term.Name)) throw new ApplicationException("Term Name is REQUIRED");
+                        if (String.IsNullOrWhiteSpace(term.StartDate.ToString())) throw new ApplicationException("Start Date is REQUIRED");
+                        if (String.IsNullOrWhiteSpace(term.EndDate.ToString())) throw new ApplicationException("End Date is REQUIRED");
                     }
                 }
                 catch (ApplicationException ex)

@@ -32,6 +32,8 @@
                 <Entry x:Name="TxtInstructorEmail" Placeholder="Email" FontSize="14"/>
                 <Entry x:Name="TxtInstructorPhone" Placeholder="Phone" FontSize="14"/>
                 <Entry x:Name="TxtNotes" Placeholder="Notes...." FontSize="14"/>
+                <Label Text="Receive notifications for start and end dates?"/>
+                <CheckBox x:Name="notifBox" Color="Green"/>
                 <Button x:Name="BtnShareNote"
                         Text="SHARE Note"
                         BackgroundColor="LightSlateGray"

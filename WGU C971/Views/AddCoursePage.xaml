@@ -33,6 +33,8 @@
                 <Entry x:Name="TxtInstructorEmail" Placeholder="Email"/>
                 <Entry x:Name="TxtInstructorPhone" Placeholder="Phone"/>
                 <Entry x:Name="TxtNotes" Placeholder="Notes...."/>
+                <Label Text="Receive notifications for start and end dates?"/>
+                <CheckBox IsChecked ="True" x:Name="notifBox" Color="Green"/>
 
                 <StackLayout>
                     <Button x:Name="BtnSaveCourse" 

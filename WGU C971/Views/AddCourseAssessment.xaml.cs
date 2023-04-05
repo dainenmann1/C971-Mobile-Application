@@ -36,8 +36,15 @@ namespace WGU_C971.Views
                         StartDate = DatePickerStartDate.Date,
                         EndDate = DatePickerEndDate.Date.AddHours(2.5),
                         CourseId = Course.Id,
-                        Notify = true
                     };
+                    if (assessnotifBox.IsChecked == true)
+                    {
+                        assessment.Notify = true;
+                    }
+                    else
+                    {
+                        assessment.Notify = false;
+                    }
 
                     string perfAssessmentQuery = $"SELECT * FROM Assessment WHERE CourseId = {Course.Id} AND Type = 'Performance';";
                     string objAssessmentQuery = $"SELECT * FROM Assessment WHERE CourseId = {Course.Id} AND Type = 'Objective';";

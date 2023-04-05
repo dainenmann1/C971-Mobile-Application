@@ -23,6 +23,8 @@
 
                 <Label Text="End Date" />
                 <DatePicker x:Name="DatePickerEndDate" />
+                <Label Text="Receive notifications for start and end dates?"/>
+                <CheckBox x:Name="assessnotifBox" Color="Green"/>
             </StackLayout>
             <StackLayout Margin="0,50,0,0">
                 <Button x:Name="BtnSave" Text="SAVE" BackgroundColor="Green" Clicked="BtnSave_Clicked"/>

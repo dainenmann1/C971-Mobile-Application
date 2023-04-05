@@ -38,6 +38,8 @@ namespace WGU_C971.Views
             {
                 if (RequiredTermInputsPopulated())
                 {
+                    ValidateStartAndEndDates();
+
                     Term.Name = TxtTermName.Text;
                     Term.StartDate = DatePickerStartDate.Date;
                     Term.EndDate = DatePickerEndDate.Date;
@@ -86,6 +88,20 @@ namespace WGU_C971.Views
             return !String.IsNullOrWhiteSpace(TxtTermName.Text) &&
                 !String.IsNullOrWhiteSpace(DatePickerStartDate.Date.ToString()) &&
                 !String.IsNullOrWhiteSpace(DatePickerEndDate.Date.ToString());
+        }
+        private void ValidateStartAndEndDates()
+        {
+            if (DatePickerStartDate.Date > DatePickerEndDate.Date)
+            {
+                string message = "Please check the start and end date!\nSelected start date cannot come after the end date";
+                throw new ApplicationException(message);
+            }
+
+            if (DatePickerStartDate.Date < DateTime.Today)
+            {
+                string message = "Start date cannot Be a past date.\nPlease select a future date";
+                throw new ApplicationException(message);
+            }
         }
     }
 }
